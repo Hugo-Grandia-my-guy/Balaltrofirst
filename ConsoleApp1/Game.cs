@@ -71,19 +71,22 @@ class Game
                 .ToList();
 
             var result = evaluator.Evaluate(played);
+                    int bonusMult = played
+            .OfType<MultCard>()
+            .Sum(c => c.BonusMult);
 
             int cardChips = played.Sum(c => c.Chips);
             int chips = result.BaseChips + cardChips;
-            int points = chips * result.Mult;
+            int totalMult = result.Mult + bonusMult;
+            int points = chips * totalMult;
 
             score += points;
             handsLeft--;
 
             Console.WriteLine();
-            Console.WriteLine($"Pokerhand: {result.Name}");
-            Console.WriteLine($"Basischips: {result.BaseChips}");
-            Console.WriteLine($"Kaartchips: {cardChips}");
-            Console.WriteLine($"Multiplier: x{result.Mult}");
+            Console.WriteLine($"Basis Mult: x{result.Mult}");
+            Console.WriteLine($"Bonus Mult: +{bonusMult}");
+            Console.WriteLine($"Totale Mult: x{totalMult}");
             Console.WriteLine($"Punten verdiend: {points}");
 
             RemoveSelectedCards(selected);

@@ -16,6 +16,7 @@ class Deck
         Shuffle();
     }
 
+
     private void CreateDeck()
     {
         string[] suits = { "♠", "♥", "♦", "♣" };
@@ -25,9 +26,17 @@ class Deck
             for (int rank = 2; rank <= 14; rank++)
             {
                 if (rank == 7)
+                {
                     cards.Add(new BonusCard(rank, suit));
+                }
+                else if (rank == 2)
+                {
+                    cards.Add(new MultCard(rank, suit, 2));
+                }
                 else
+                {
                     cards.Add(new Card(rank, suit));
+                }
             }
         }
     }
