@@ -13,7 +13,8 @@ class Card
         Suit = suit;
     }
 
-    public int Chips => Rank == 14 ? 11 : Math.Min(Rank, 10);
+    public virtual int Chips =>
+    Rank == 14 ? 11 : Math.Min(Rank, 10);
 
     public string RankName => Rank switch
     {

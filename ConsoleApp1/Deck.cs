@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 class Deck
 {
+
     private readonly List<Card> cards = new();
     private readonly Random rng = new();
 
@@ -23,7 +24,10 @@ class Deck
         {
             for (int rank = 2; rank <= 14; rank++)
             {
-                cards.Add(new Card(rank, suit));
+                if (rank == 7)
+                    cards.Add(new BonusCard(rank, suit));
+                else
+                    cards.Add(new Card(rank, suit));
             }
         }
     }
