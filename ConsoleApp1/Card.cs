@@ -1,32 +1,37 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-class Card
+﻿class Card
 {
-    public int Rank { get; }
-    public string Suit { get; }
+    public Value Rank { get; }
+    public Suit Suit { get; }
 
-    public Card(int rank, string suit)
+    public Card(Value rank, Suit suit)
     {
         Rank = rank;
         Suit = suit;
     }
 
     public virtual int Chips =>
-    Rank == 14 ? 11 : Math.Min(Rank, 10);
+        Rank == Value.Ace ? 11 : Math.Min((int)Rank, 10);
 
     public string RankName => Rank switch
     {
-        11 => "J",
-        12 => "Q",
-        13 => "K",
-        14 => "A",
-        _ => Rank.ToString()
+        Value.Jack => "J",
+        Value.Queen => "Q",
+        Value.King => "K",
+        Value.Ace => "A",
+        _ => ((int)Rank).ToString()
     };
 
     public override string ToString()
     {
-        return $"{RankName}{Suit}";
+        string suitSymbol = Suit switch
+        {
+            Suit.Spades => "♠",
+            Suit.Hearts => "♥",
+            Suit.Diamonds => "♦",
+            Suit.Clubs => "♣",
+            _ => "?"
+        };
+
+        return $"{RankName}{suitSymbol}";
     }
 }

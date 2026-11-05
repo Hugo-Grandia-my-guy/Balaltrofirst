@@ -22,7 +22,8 @@ class PokerHandEvaluator
         bool flush = cards.Count == 5 &&
             cards.All(c => c.Suit == cards[0].Suit);
 
-        var ranks = cards.Select(c => c.Rank)
+        var ranks = cards
+            .Select(c => (int)c.Rank)
             .Distinct()
             .OrderBy(r => r)
             .ToList();
@@ -33,6 +34,7 @@ class PokerHandEvaluator
         {
             straight = ranks[4] - ranks[0] == 4;
 
+            // Ace-low straight: A, 2, 3, 4, 5
             if (ranks.SequenceEqual(new[] { 2, 3, 4, 5, 14 }))
                 straight = true;
         }
@@ -66,3 +68,4 @@ class PokerHandEvaluator
         return ("High Card", 5, 1);
     }
 }
+

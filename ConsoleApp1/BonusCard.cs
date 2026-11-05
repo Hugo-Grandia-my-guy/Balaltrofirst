@@ -1,7 +1,6 @@
-﻿
-class BonusCard : Card
+﻿class BonusCard : Card
 {
-    public BonusCard(int rank, string suit)
+    public BonusCard(Value rank, Suit suit)
         : base(rank, suit)
     {
     }
@@ -10,6 +9,6 @@ class BonusCard : Card
 
     public override string ToString()
     {
-        return $"{RankName}{Suit} [BONUS +7]";
+        return $"{base.ToString()} [BONUS +7]";
     }
 }

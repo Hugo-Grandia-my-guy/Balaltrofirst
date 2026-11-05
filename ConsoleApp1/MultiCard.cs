@@ -3,7 +3,7 @@ class MultCard : Card
 {
     public int BonusMult { get; }
 
-    public MultCard(int rank, string suit, int bonusMult = 2)
+    public MultCard(Value rank, Suit suit, int bonusMult = 4)
         : base(rank, suit)
     {
         BonusMult = bonusMult;
@@ -11,6 +11,6 @@ class MultCard : Card
 
     public override string ToString()
     {
-        return $"{RankName}{Suit} [MULT +{BonusMult}]";
+        return $"{base.ToString()} [MULT +{BonusMult}]";
     }
 }

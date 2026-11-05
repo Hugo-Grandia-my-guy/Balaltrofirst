@@ -19,28 +19,39 @@ class Deck
 
     private void CreateDeck()
     {
-        string[] suits = { "♠", "♥", "♦", "♣" };
+        Suit[] suits =
+        {
+        Suit.Spades,
+        Suit.Hearts,
+        Suit.Diamonds,
+        Suit.Clubs
+    };
 
-        foreach (string suit in suits)
+        foreach (Suit suit in suits)
         {
             for (int rank = 2; rank <= 14; rank++)
             {
-                if (rank == 7)
+                Value value = (Value)rank;
+
+                if (value == Value.Seven)
                 {
-                    cards.Add(new BonusCard(rank, suit));
+                    cards.Add(new BonusCard(value, suit));
                 }
-                else if (rank == 2)
+                else if (value == Value.Two)
                 {
-                    cards.Add(new MultCard(rank, suit, 2));
+                    cards.Add(new MultCard(value, suit, 4));
+                }
+                else if (value == Value.Three)
+                {
+                    cards.Add(new Glass(value, suit, 2));
                 }
                 else
                 {
-                    cards.Add(new Card(rank, suit));
+                    cards.Add(new Card(value, suit));
                 }
             }
         }
     }
-
     public void Shuffle()
     {
         for (int i = cards.Count - 1; i > 0; i--)
