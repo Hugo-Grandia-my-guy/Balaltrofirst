@@ -1,4 +1,6 @@
-﻿class BonusCard : Card
+﻿namespace ConsoleApp1;
+
+public class BonusCard : Card
 {
     public BonusCard(Value rank, Suit suit)
         : base(rank, suit)

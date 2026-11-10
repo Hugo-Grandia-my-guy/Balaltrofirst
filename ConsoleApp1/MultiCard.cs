@@ -1,5 +1,6 @@
-﻿
-class MultCard : Card
+﻿namespace ConsoleApp1;
+
+public class MultCard : Card
 {
     public int BonusMult { get; }
 

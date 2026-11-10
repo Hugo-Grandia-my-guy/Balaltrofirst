@@ -1,4 +1,6 @@
-﻿class Glass : Card
+﻿namespace ConsoleApp1;
+
+class Glass : Card
 {
     public int Times { get; }
 

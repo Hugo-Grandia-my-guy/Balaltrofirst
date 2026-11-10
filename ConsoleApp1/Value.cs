@@ -1,4 +1,6 @@
-﻿enum Value
+﻿namespace ConsoleApp1;
+
+public enum Value
 {
     Two = 2,
     Three = 3,

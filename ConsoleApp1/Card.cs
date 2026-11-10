@@ -1,4 +1,6 @@
-﻿class Card
+﻿namespace ConsoleApp1;
+
+public class Card
 {
     public Value Rank { get; }
     public Suit Suit { get; }
