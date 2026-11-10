@@ -4,10 +4,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-class PokerHandEvaluator
+public class PokerHandEvaluator
 {
-    public (string Name, int BaseChips, int Mult)
-        Evaluate(List<Card> cards)
+    
+       public (string Name, int BaseChips, int Mult)
+    Evaluate(List<Card> cards)
     {
         if (cards == null || cards.Count == 0)
             throw new ArgumentException(
