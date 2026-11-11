@@ -1,4 +1,6 @@
 <Solution>
-  <Project Path="../../../../OneDrive/Bureaublad/Balatro_game/TestProject2/ConsoleApp1.Tests.csproj" Id="bd0ab25e-e1b0-48b6-9760-ca12953213b0" />
-  <Project Path="ConsoleApp1/ConsoleApp1.csproj" />
+  <Folder Name="/NewFolder1/">
+    <Project Path="../../../../OneDrive/Bureaublad/Balatro_game/TestProject2/ConsoleApp1.Tests.csproj" Id="bd0ab25e-e1b0-48b6-9760-ca12953213b0" />
+    <Project Path="ConsoleApp1/ConsoleApp1.csproj" />
+  </Folder>
 </Solution>
