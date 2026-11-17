@@ -1,4 +1,4 @@
-﻿namespace TestProject1
+﻿namespace TestProject3
 {
     [TestClass]
     public sealed class Test1
