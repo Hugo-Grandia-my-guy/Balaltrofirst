@@ -3,7 +3,7 @@
 using System;
 using System.Collections.Generic;
 
-class Deck
+public class Deck
 {
 
     private readonly List<Card> cards = new();
