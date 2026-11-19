@@ -42,9 +42,9 @@ public class Deck
                 {
                     cards.Add(new MultCard(value, suit, 4));
                 }
-                else if (value == Value.Three)
+                else if (value == Value.Four && suit == Suit.Spades)
                 {
-                    cards.Add(new Glass(value, suit, 2));
+                    cards.Add(new Glass(value, suit));
                 }
                 else
                 {

@@ -1,6 +1,6 @@
 ﻿namespace ConsoleApp1;
 
-class Glass : Card
+public class Glass : Card
 {
     public int Times { get; }
 
@@ -12,6 +12,6 @@ class Glass : Card
 
     public override string ToString()
     {
-        return $"{base.ToString()} [GLASS x{Times}]";
+        return $"{base.ToString()} [GLASS *{Times}]";
     }
 }

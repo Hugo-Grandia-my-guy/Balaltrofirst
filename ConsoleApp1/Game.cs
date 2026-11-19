@@ -72,13 +72,19 @@ class Game
                 .ToList();
 
             var result = evaluator.Evaluate(played);
-                    int bonusMult = played
-            .OfType<MultCard>()
-            .Sum(c => c.BonusMult);
+            int bonusMult = played
+                .OfType<MultCard>()
+                .Sum(c => c.BonusMult);
+
+            int glassMult = played
+                .OfType<Glass>()
+                .Aggregate(1, (current, card) => current * card.Times);
 
             int cardChips = played.Sum(c => c.Chips);
             int chips = result.BaseChips + cardChips;
-            int totalMult = result.Mult + bonusMult;
+
+            int totalMult = (result.Mult + bonusMult) * glassMult;
+
             int points = chips * totalMult;
 
             score += points;
