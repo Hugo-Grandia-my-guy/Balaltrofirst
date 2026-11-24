@@ -141,12 +141,78 @@ class Game
 
     private void ShowHand()
     {
-        Console.WriteLine("Jouw hand:");
+        Console.WriteLine();
+        Console.WriteLine("JOUW HAND:");
+
+        List<string[]> renderedCards = new();
 
         for (int i = 0; i < hand.Count; i++)
-            Console.WriteLine($"{i + 1}. {hand[i]}");
-    }
+        {
+            renderedCards.Add(RenderCard(hand[i], i + 1));
+        }
 
+        for (int row = 0; row < 7; row++)
+        {
+            for (int i = 0; i < hand.Count; i++)
+            {
+                if (hand[i].Suit == Suit.Hearts ||
+                    hand[i].Suit == Suit.Diamonds)
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                }
+                else
+                {
+                    Console.ForegroundColor = ConsoleColor.White;
+                }
+
+                Console.Write(renderedCards[i][row] + "  ");
+            }
+
+            Console.WriteLine();
+        }
+
+        Console.ResetColor();
+    }
+    private string[] RenderCard(Card card, int number)
+    {
+        string suit = card.Suit switch
+        {
+            Suit.Spades => "♠",
+            Suit.Hearts => "♥",
+            Suit.Diamonds => "♦",
+            Suit.Clubs => "♣",
+            _ => "?"
+        };
+
+        string special = card switch
+        {
+            BonusCard => "BONUS +10",
+            MultCard m => $"MULT +{m.BonusMult}",
+            Glass g => $"GLASS x{g.Times}",
+            _ => ""
+        };
+
+        return new string[]
+        {
+        "+-----------+",
+        $"|{Center($"#{number}", 11)}|",
+        "|           |",
+        $"|{Center(card.RankName, 11)}|",
+        $"|{Center(suit, 11)}|",
+        $"|{Center(special, 11)}|",
+        "+-----------+"
+        };
+    }
+    private string Center(string text, int width)
+    {
+        if (text.Length > width)
+            text = text.Substring(0, width);
+
+        int left = (width - text.Length) / 2;
+
+        return text.PadLeft(text.Length + left)
+                   .PadRight(width);
+    }
     private List<int> ReadSelection()
     {
         Console.WriteLine(
