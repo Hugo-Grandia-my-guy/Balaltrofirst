@@ -11,7 +11,7 @@ class Game
 
     private const int HandSize = 8;
     private const int TargetScore = 300;
-    private const int MaxCardsPlayed = 5;
+    private const int MaxCardsPlayed = 6;
 
     public void Start()
     {
@@ -211,7 +211,7 @@ class Game
     private List<int> ReadSelection()
     {
         Console.WriteLine(
-            $"Kies 1 t/m {Math.Min(MaxCardsPlayed, hand.Count)} kaarten, gescheiden door spaties.");
+            $"Kies 1 tot {Math.Min(MaxCardsPlayed, hand.Count)} kaarten, gescheiden door spaties.");
         Console.Write("Kaarten: ");
 
         string input = Console.ReadLine() ?? "";
