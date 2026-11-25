@@ -1,7 +1,7 @@
-﻿using ConsoleApp1;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
 using System;
+using ConsoleApp1.models;
 [TestClass]
 public class PokerHandEvaluatorTests
 {

@@ -1,4 +1,4 @@
-﻿namespace ConsoleApp1;
+﻿namespace ConsoleApp1.models;
 
 using System;
 using System.Collections.Generic;

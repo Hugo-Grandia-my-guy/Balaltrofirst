@@ -1,4 +1,4 @@
-﻿using ConsoleApp1;
+﻿using ConsoleApp1.models;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 [TestClass]

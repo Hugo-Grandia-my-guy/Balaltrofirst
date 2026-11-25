@@ -1,4 +1,6 @@
-﻿namespace ConsoleApp1;
+﻿using ConsoleApp1.models;
+
+namespace ConsoleApp1;
 
 public class BonusCard : Card
 {

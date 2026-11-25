@@ -1,9 +1,7 @@
-﻿namespace ConsoleApp1;
+﻿
+using ConsoleApp1.models;
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-
+namespace ConsoleApp1;
 class Game
 {
     private readonly Deck deck = new();
