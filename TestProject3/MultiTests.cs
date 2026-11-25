@@ -1,6 +1,6 @@
 ﻿
 using System;
-using ConsoleApp1.models;
+using ConsoleApp1;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 [TestClass]

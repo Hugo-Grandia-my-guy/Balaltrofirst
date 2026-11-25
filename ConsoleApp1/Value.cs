@@ -1,6 +1,4 @@
-﻿namespace ConsoleApp1.models;
-
-public enum Value
+﻿public enum Value
 {
     Two = 2,
     Three = 3,

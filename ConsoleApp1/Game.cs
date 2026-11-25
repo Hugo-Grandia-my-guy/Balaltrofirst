@@ -1,7 +1,4 @@
-﻿
-using ConsoleApp1.models;
-
-namespace ConsoleApp1;
+﻿namespace ConsoleApp1;
 class Game
 {
     private readonly Deck deck = new();

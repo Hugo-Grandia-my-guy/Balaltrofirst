@@ -1,13 +1,10 @@
-﻿namespace ConsoleApp1.models;
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 
 public class Deck
 {
-
-    private readonly List<Card> cards = new();
-    private readonly Random rng = new();
+    private List<Card> cards = new List<Card>();
+    private Random random = new Random();
 
     public int Count => cards.Count;
 
@@ -17,34 +14,25 @@ public class Deck
         Shuffle();
     }
 
-
     private void CreateDeck()
     {
-        Suit[] suits =
-        {
-        Suit.Spades,
-        Suit.Hearts,
-        Suit.Diamonds,
-        Suit.Clubs
-    };
+        cards.Clear();
 
-        foreach (Suit suit in suits)
+        foreach (Suit suit in Enum.GetValues(typeof(Suit)))
         {
-            for (int rank = 2; rank <= 14; rank++)
+            foreach (Value value in Enum.GetValues(typeof(Value)))
             {
-                Value value = (Value)rank;
-
                 if (value == Value.Seven)
                 {
                     cards.Add(new BonusCard(value, suit));
                 }
                 else if (value == Value.Two)
                 {
-                    cards.Add(new MultCard(value, suit, 4));
+                    cards.Add(new MultCard(value, suit, 2));
                 }
                 else if (value == Value.Four && suit == Suit.Spades)
                 {
-                    cards.Add(new Glass(value, suit));
+                    cards.Add(new Glass(value, suit, 2));
                 }
                 else
                 {
@@ -53,16 +41,20 @@ public class Deck
             }
         }
     }
+
     public void Shuffle()
     {
         for (int i = cards.Count - 1; i > 0; i--)
         {
-            int j = rng.Next(i + 1);
-            (cards[i], cards[j]) = (cards[j], cards[i]);
+            int j = random.Next(i + 1);
+
+            Card temp = cards[i];
+            cards[i] = cards[j];
+            cards[j] = temp;
         }
     }
 
-    public Card? Draw()
+    public Card Draw()
     {
         if (cards.Count == 0)
             return null;

@@ -1,19 +1,14 @@
 ﻿using ConsoleApp1;
-
+using System;
+using System.Text;
 
 class Program
 {
     static void Main()
     {
-        Console.OutputEncoding =
-            System.Text.Encoding.UTF8;
+        Console.OutputEncoding = Encoding.UTF8;
 
-        Round round = new Round();
-
-        RoundViewModel viewModel =
-            new RoundViewModel(round);
-
-        viewModel.RetrieveData();
-        viewModel.Render();
+        Game game = new Game();
+        game.Start();
     }
 }
