@@ -1,26 +1,35 @@
-﻿namespace ConsoleApp1;
+﻿using ConsoleApp1.models;
+using ConsoleApp1.ViewModels;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+namespace ConsoleApp1;
+
 class Game
 {
     private readonly Deck deck = new();
     private readonly PokerHandEvaluator evaluator = new();
     private readonly List<Card> hand = new();
 
-    private int score = 0;
-    private int handsLeft = 5;
-    private int discardsLeft = 3;
+    private readonly Round round = new();
+    private readonly RoundViewModel viewModel;
 
     private const int HandSize = 8;
-    private const int TargetScore = 300;
     private const int MaxCardsPlayed = 6;
+
+    public Game()
+    {
+        viewModel = new RoundViewModel(round);
+    }
 
     public void Start()
     {
         DrawCards(HandSize);
 
         Console.WriteLine("=== MINI BALATRO ===");
-        Console.WriteLine($"Scoredoel: {TargetScore}");
+        Console.WriteLine($"Scoredoel: {viewModel.TargetScore}");
 
-        while (score < TargetScore && handsLeft > 0)
+        while (viewModel.Score < viewModel.TargetScore && viewModel.HandsLeft > 0)
         {
             ShowStatus();
             ShowHand();
@@ -48,7 +57,7 @@ class Game
 
             if (choice == "W")
             {
-                if (discardsLeft <= 0)
+                if (viewModel.DiscardsLeft <= 0)
                 {
                     Console.WriteLine("Geen discards meer!");
                     continue;
@@ -56,7 +65,7 @@ class Game
 
                 RemoveSelectedCards(selected);
                 DrawCards(selected.Count);
-                discardsLeft--;
+                round.DiscardsLeft--;
 
                 Console.WriteLine("Kaarten vervangen.");
                 continue;
@@ -82,8 +91,8 @@ class Game
 
             int points = chips * totalMult;
 
-            score += points;
-            handsLeft--;
+            round.Score += points;
+            round.HandsLeft--;
 
             Console.WriteLine();
             Console.WriteLine($"Basis Mult: x{result.Mult}");
@@ -100,14 +109,15 @@ class Game
 
         Console.WriteLine();
 
-        if (score >= TargetScore)
+        if (viewModel.Score >= viewModel.TargetScore)
             Console.WriteLine("GEWONNEN!");
-        else if (handsLeft == 0)
+        else if (viewModel.HandsLeft == 0)
             Console.WriteLine("GAME OVER!");
         else
             Console.WriteLine("Spel gestopt.");
 
-        Console.WriteLine($"Eindscore: {score}/{TargetScore}");
+        Console.WriteLine(
+            $"Eindscore: {viewModel.Score}/{viewModel.TargetScore}");
     }
 
     private void DrawCards(int amount)
@@ -127,9 +137,9 @@ class Game
     {
         Console.WriteLine();
         Console.WriteLine("------------------------------");
-        Console.WriteLine($"Score: {score}/{TargetScore}");
-        Console.WriteLine($"Handen over: {handsLeft}");
-        Console.WriteLine($"Discards over: {discardsLeft}");
+        Console.WriteLine($"Score: {viewModel.Score}/{viewModel.TargetScore}");
+        Console.WriteLine($"Handen over: {viewModel.HandsLeft}");
+        Console.WriteLine($"Discards over: {viewModel.DiscardsLeft}");
         Console.WriteLine($"Kaarten in deck: {deck.Count}");
         Console.WriteLine("------------------------------");
     }
